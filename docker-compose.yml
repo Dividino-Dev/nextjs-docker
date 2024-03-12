@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  web:
+    container_name: "nextjs_app"
+    build: .
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/app
+    environment:
+      - NODE_ENV=dev
+    networks:
+      - dev-network
+  
+networks: 
+  dev-network:
+    driver: bridge
